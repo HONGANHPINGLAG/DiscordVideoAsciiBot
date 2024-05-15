@@ -12,4 +12,4 @@ def DownloadVideo(link):
 def DeleteVideo():
     time.sleep(10)
     os.remove('./mp4Files/video.mp4')
-    print('Deleted video')
+    # print('Deleted video')
