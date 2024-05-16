@@ -11,7 +11,6 @@ def FrameGrabber():
         frameName = './videoFrames/frame' + str(int(count/2)) + '.jpg'
         success, image = vidObj.read() 
         if (count % 2) == 0:
-            # print('Frame', int(count/2))
             cv2.imwrite(frameName, image) 
         count += 1
         
@@ -24,7 +23,7 @@ def DeleteFrames():
 
 def ImageResizer():
     # Image has to be 88x66px for discord bot
-    size = (88, 66)
+    size = (87, 65)
     dirPath = './videoFrames'
     allFrames = os.listdir(dirPath)
     for frame in allFrames:
