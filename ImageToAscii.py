@@ -4,58 +4,38 @@ from PIL import Image
 
 def FrameGrabber(): 
     vidObj = cv2.VideoCapture("./mp4Files/video.mp4")  
-    
     count = 0
     success = 1
     while success: 
         frameName = './videoFrames/frame' + str(int(count/2)) + '.jpg'
         success, image = vidObj.read() 
+        # Only downloads every other frame, reducing framerate by 1/2 for storage and time reasons
         if (count % 2) == 0:
             cv2.imwrite(frameName, image) 
         count += 1
-        
-def DeleteFrames():
-    dirPath = './videoFrames'
-    allFrames = os.listdir(dirPath)     
-    for frame in allFrames:
-        framePath = os.path.join(dirPath, frame)
-        os.remove(framePath)
 
 def ImageResizer():
-    # Image has to be 88x66px for discord bot
-    size = (87, 65)
+    size = (36, 48)
     dirPath = './videoFrames'
-    allFrames = os.listdir(dirPath)
-    for frame in allFrames:
-        fileName = './resizedFrames/' + frame.lower()
+    allFiles = os.listdir(dirPath)
+    for frame in allFiles:
         framePath = os.path.join(dirPath, frame.lower())
         oneFrame = Image.open(framePath).convert('L')
         oneFrame.thumbnail(size)
-        oneFrame.save(fileName)
+        FrameToAscii(oneFrame, frame, size[0]*2)
     
-def PixelToAscii(frame):
-    asciiChars = ['⬛', '⬜']
-    pixels = frame.getdata()
-    asciiStr = ''
-    for pixel in pixels:
-        asciiStr += asciiChars[pixel//130]
-    return asciiStr
+def FrameToAscii(frame, frameName, lineLength):
+        asciiChars = ['░░', '▒▒', '▓▓', '██']
+        pixels = frame.getdata()
+        asciiStr = ''
+        for pixel in pixels:
+            asciiStr += asciiChars[pixel//64]
     
-def FrameToAscii():
-    dirPath = './resizedFrames'
-    allFrames = os.listdir(dirPath)
-    imageSize = [88, 66]
-    for frame in allFrames:
-        filePath = os.path.join(dirPath, frame.lower())
-        oneFrame = Image.open(filePath)
-        
-        asciiStr = PixelToAscii(oneFrame)
-        asciiStrLen = len(asciiStr)
         asciiImg = ''
-        for i in range(0, asciiStrLen, imageSize[0]):
-            asciiImg += asciiStr[i:i+imageSize[0]] + "\n"
+        for i in range(0, len(asciiStr), lineLength):
+            asciiImg += asciiStr[i:i+lineLength] + '\n'
         
-        textFileName = './asciiFrames/' + frame.split('.')[0] + '.txt'
+        newFrameName = frameName.split('/')[-1].split('.')[0]
+        textFileName = './asciiFrames/' + newFrameName + '.txt'
         with open(textFileName, 'w') as f:
             f.write(asciiImg)
-        
