@@ -42,7 +42,7 @@ async def runCommand(command, *, link:str = None):
                     asciiPicture += line
                     
             count += 1
-            time.sleep(0.6)
+            time.sleep(0.75)
             
             await message.edit(content=asciiPicture)
             
