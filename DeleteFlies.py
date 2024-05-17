@@ -1,5 +1,4 @@
 import os
-import time
        
 def deleteFiles(dirPath):
     allframes = os.listdir(dirPath)
@@ -17,7 +16,7 @@ def DeleteAllFiles():
         os.remove(videoPath)
     
     # Removing all of the files from the videoFrames, resizedFrames, and asciiFrames folders
-    framePaths = ['./videoFrames', './resizedFrames', './asciiFrames']
+    framePaths = ['./videoFrames', './asciiFrames']
     for path in framePaths:
         deleteFiles(path)
     
@@ -32,11 +31,6 @@ def DeleteVideoFrames():
     print('Removing video frames\n')
     deleteFiles('./videoFrames')
 
-def DeleteResizedFrames():
-    print('Removing resized frames\n')
-    deleteFiles('./resizedFrames')
-
 def DeleteAsciiFrames():
     print('Removing ascii frames\n')
     deleteFiles('./asciiFrames')
-    
