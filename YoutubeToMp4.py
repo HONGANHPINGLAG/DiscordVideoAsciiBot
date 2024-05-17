@@ -9,7 +9,3 @@ def DownloadVideo(link):
     yt = yt.streams.filter(progressive=True, file_extension='mp4').get_by_resolution('360p')
     yt.download(filename='video.mp4', output_path='./mp4Files')
     
-def DeleteVideo():
-    time.sleep(10)
-    os.remove('./mp4Files/video.mp4')
-    # print('Deleted video')
