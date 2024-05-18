@@ -25,8 +25,8 @@ async def runCommand(command, *, link:str = None):
        
         Driver.Run(link)
         time.sleep(1)
-        
-        await message.edit(content='Bad Apple, but played in ascii by a Discord bot')
+        if 'https://youtu.be/9lNZ_Rnr7Jc?si=doHED9zHwVT4Y_Pf' in link:     
+            await message.edit(content='Bad Apple, but played in ascii by a Discord bot')
         
         asciiPath = './asciiFrames'
         allFiles = os.listdir(asciiPath)

@@ -5,14 +5,14 @@ import ImageToAscii
 
 # link = 'https://youtu.be/9lNZ_Rnr7Jc?si=doHED9zHwVT4Y_Pf'
 
+mp4Dir = './mp4Files'
+videoFrameDir = './videoFrames'
+asciiFrameDir = './asciiFrames'
+os.makedirs(mp4Dir, exist_ok=True)
+os.makedirs(videoFrameDir, exist_ok=True)
+os.makedirs(asciiFrameDir, exist_ok=True)
+
 def Run(link):
-    mp4Dir = './mp4Files'
-    videoFrameDir = './videoFrames'
-    asciiFrameDir = './asciiFrames'
-    os.makedirs(mp4Dir, exist_ok=True)
-    os.makedirs(videoFrameDir, exist_ok=True)
-    os.makedirs(asciiFrameDir, exist_ok=True)
-    
     DeleteFlies.DeleteAllFiles()
     
     YoutubeToMp4.DownloadVideo(link, mp4Dir)

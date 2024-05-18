@@ -1,5 +1,5 @@
 import os
-       
+    
 def deleteFiles(dirPath):
     allframes = os.listdir(dirPath)
     if len(allframes) > 0:
