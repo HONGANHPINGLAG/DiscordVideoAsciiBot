@@ -4,8 +4,6 @@ import DeleteFlies
 import YoutubeToMp4
 import ImageToAscii
 
-# link = 'https://youtu.be/9lNZ_Rnr7Jc?si=doHED9zHwVT4Y_Pf'
-
 mp4Dir = './mp4Files'
 videoFrameDir = './videoFrames'
 asciiFrameDir = './asciiFrames'
