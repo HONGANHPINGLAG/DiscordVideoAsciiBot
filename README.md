@@ -14,6 +14,13 @@ Bot usage:
 !del will delete the command message and the message before it
 !del <number> will delete the command message and the number of messages specified before the call
 
-Code usage: 
+Setup and code usage: 
+Create a bot/application on https://discord.com/developers/applications
+Fill in Name, PFP (optional), 
+Open Bot and toggle on Presence Intent, Server Members Intent, and Message Content Intent
+Also in Bot, copy the token and paste it into DiscordToken.py where the placeholder text is
+Open OAuth2 and select Bot in the OAuth2 URL Generator section, then select Administrator in Bot Permissions. Copy the link in the Generated URL at the bottom of the page once Bot and Administrator are selected.
+Paste the link into your browser to invite it to your server
+
 Run DiscordBotVideoDisplay.py to start bot
-If you don't want to watch all the way through, press Ctrl+c in the terminal in DiscordBotVideoDisplay.py, rerun the bot again, then run !reset to delete all hanging files left
+If you don't want to watch all the way through, press Ctrl+c in the terminal in DiscordBotVideoDisplay.py if using an IDE or stop the program another way, rerun DiscordBotVideoDisplay.py again, then run !reset to delete all hanging files left 
