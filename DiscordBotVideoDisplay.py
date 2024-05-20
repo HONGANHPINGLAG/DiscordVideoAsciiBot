@@ -26,6 +26,7 @@ async def runCommand(command, *, link:str = None):
        
         Driver.Run(link)
         time.sleep(1)
+        # Displays Bad Apple text if link is Bad Apple. Special surprise thing for video
         if 'https://youtu.be/FtutLA63Cp8?si=CnKngncrljco9EWP' in link:     
             await message.edit(content='Bad Apple, but played in ascii by a Discord bot')
         
