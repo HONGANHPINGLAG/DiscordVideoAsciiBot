@@ -24,13 +24,15 @@ def DeleteAllFiles():
 
 
 def DeleteVideoFile():
-    print('Removing video file\n')
-    os.remove('./mp4Files/video.mp4')
+    videoPath = os.path.join('./mp4Files', 'video.mp4')
+    os.remove(videoPath)
+    print('Removed video file\n')
+    
 
 def DeleteVideoFrames():
-    print('Removing video frames\n')
     deleteFiles('./videoFrames')
+    print('Removed video frames\n')
 
 def DeleteAsciiFrames():
-    print('Removing ascii frames\n')
     deleteFiles('./asciiFrames')
+    print('Removed ascii frames\n')

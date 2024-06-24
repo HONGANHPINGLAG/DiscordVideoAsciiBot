@@ -1,9 +1,8 @@
 import os
+import time
 import DeleteFlies
 import YoutubeToMp4
 import ImageToAscii
-
-# link = 'https://youtu.be/9lNZ_Rnr7Jc?si=doHED9zHwVT4Y_Pf'
 
 mp4Dir = './mp4Files'
 videoFrameDir = './videoFrames'
@@ -19,10 +18,12 @@ def Run(link):
     print('Finished downloading video')
 
     ImageToAscii.FrameGrabber(mp4Dir, videoFrameDir)
+    time.sleep(0.25)
     print('Finished grabbing frames')
     DeleteFlies.DeleteVideoFile()
 
     ImageToAscii.ImageResizer(videoFrameDir, asciiFrameDir)
+    time.sleep(0.25)
     print('Finished resizing frames and converting to ascii')
     DeleteFlies.DeleteVideoFrames()
 

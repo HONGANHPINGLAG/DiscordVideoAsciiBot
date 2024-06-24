@@ -57,7 +57,7 @@ def getCharAmount(frame):
             asciiStr += asciiChars[pixel//64]
             pixelCount += 1
         
-        print('NewSize:', newSize, 'with asciiStr length:', pixelCount*2)
+        # print('NewSize:', newSize, 'with asciiStr length:', pixelCount*2)
 
         if len(asciiStr) > maxStrSize:
             print('Size:', aspectRatioSizes[count-1], 'with char count of', str(asciiStrLen))
@@ -82,5 +82,5 @@ def FrameToAscii(frame, frameName, lineLength, asciiFrameDir):
     
     newFrameName = frameName.split('/')[-1].split('.')[0] + '.txt'
     textFileName = os.path.join(asciiFrameDir, newFrameName)
-    with open(textFileName, 'w') as f:
+    with open(textFileName, 'w', encoding='utf-8') as f:
         f.write(asciiImg)

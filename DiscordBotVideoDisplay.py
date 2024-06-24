@@ -22,18 +22,21 @@ async def runCommand(command, *, link:str = None):
     else:
         print('\nStarting up')
         message = await command.send('Starting Up!')
+        await command.message.delete()
        
         Driver.Run(link)
         time.sleep(1)
-        if 'https://youtu.be/FtutLA63Cp8?si=t-NxnLPKp_5-TVFH' in link:     
+        # Displays Bad Apple text if link is Bad Apple. Special surprise thing for video
+        if 'https://youtu.be/FtutLA63Cp8?si=CnKngncrljco9EWP' in link:     
             await message.edit(content='Bad Apple, but played in ascii by a Discord bot')
         
         asciiPath = './asciiFrames'
         allFiles = os.listdir(asciiPath)
+        fileCount = len(allFiles)
         time.sleep(5)
         
         count = 0
-        while count < len(allFiles):
+        while count < fileCount:
             asciiPicture = ''
             frameName = 'frame' + str(count) + '.txt'
             framePath = os.path.join(asciiPath, frameName)
@@ -42,14 +45,23 @@ async def runCommand(command, *, link:str = None):
                     asciiPicture += line
                     
             count += 1
-            # time.sleep(0.75)
+            
             time.sleep(0.8)
             await message.edit(content=asciiPicture)
-            # time.sleep(0.5)
-            
+            print('Frame', count, '/', fileCount)
+        
+        await message.delete()   
         DeleteFlies.DeleteAsciiFrames()  
-        await command.message.delete()   
+        print('All Finished!')
     
+@bot.command(name='reset')
+async def resetFiles(command):
+    paths = ['./mp4Files', './asciiFrames', './videoFrames']
+    for path in paths: 
+        DeleteFlies.deleteFiles(path)
+    await command.message.delete()
+    await command.send('Files reset!')
+
 @bot.command(name='del')
 async def deleteMessage(command, *, amount:int = None):
     if amount is None:
