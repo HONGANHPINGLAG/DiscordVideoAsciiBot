@@ -25,7 +25,7 @@ async def runCommand(command, *, link:str = None):
        
         Driver.Run(link)
         time.sleep(1)
-        if 'https://youtu.be/9lNZ_Rnr7Jc?si=doHED9zHwVT4Y_Pf' in link:     
+        if 'https://youtu.be/FtutLA63Cp8?si=t-NxnLPKp_5-TVFH' in link:     
             await message.edit(content='Bad Apple, but played in ascii by a Discord bot')
         
         asciiPath = './asciiFrames'
@@ -42,9 +42,10 @@ async def runCommand(command, *, link:str = None):
                     asciiPicture += line
                     
             count += 1
-            time.sleep(0.75)
-            
+            # time.sleep(0.75)
+            time.sleep(0.8)
             await message.edit(content=asciiPicture)
+            # time.sleep(0.5)
             
         DeleteFlies.DeleteAsciiFrames()  
         await command.message.delete()   
